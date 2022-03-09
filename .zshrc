@@ -1,8 +1,5 @@
-## Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
-#ZSH_THEME="spaceship"
 ZSH_THEME="agnoster"
-#ZSH_THEME="avit" # termtosvg minimal theme
 
 HIST_STAMPS="dd.mm.yyyy"
 
@@ -32,6 +29,7 @@ export PATH="$(go env GOPATH)/bin:$PATH"
 export PATH=~/.npm-global/bin:$PATH
 export EDITOR=vim
 export VISUAL=vim
+export PATH="$HOME/.poetry/bin:$PATH"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export GITUSER="danielmichaels"
 export SCRIPTS="$HOME/.local/bin"
@@ -165,15 +163,12 @@ source $HOME/.local/bin/virtualenvwrapper.sh  #work around --user install
 export WORKON_HOME=$HOME/.virtualenvs
 alias mkvirtualenv="mkvirtualenv --python=/usr/bin/python3.10" # manually change for py2
 
-#source /usr/share/nvm/init-nvm.sh
-#
-
+#######################################################
+#                 START UP                           #
+#######################################################
 eval $(thefuck --alias)
 eval "$(starship init zsh)"
 
-#source /usr/share/nvm/init-nvm.sh
 command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
-export PATH="$HOME/.poetry/bin:$PATH"
-
 command -v feh >/dev/null 2>&1 && feh-bg
