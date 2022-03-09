@@ -32,25 +32,17 @@ export VISUAL=vim
 export PATH="$HOME/.poetry/bin:$PATH"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export GITUSER="danielmichaels"
-export SCRIPTS="$HOME/.local/bin"
+export SCRIPTS="$HOME/.local/bin/scripts"
 #######################################################
 #                  GO Settings                      #
 #######################################################
 # Setup private repos by defining the user, in this case, me.
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-#export GOPROXY="direct"
 export GOPROXY=https://goproxy.io,direct
 #######################################################
 #                  Exports
 #######################################################
 export OPENFAAS_URL=https://faasd.ptco.rocks
-#######################################################
-#                  Android Exports                      #
-#######################################################
-#export ANDROID_SDK_ROOT=/home/nimitz/Android/platform-tools_r31.0.3-linux/platform-tools
-#export ANDROID_AVD_HOME=/home/nimitz/Android/avds
-#export ANDROID_EMULATOR_HOME=/home/nimitz/Android/Sdk/emulator
-#
 #######################################################
 #                  General Alias                      #
 #######################################################
@@ -62,28 +54,18 @@ alias sz="source ~/.zshrc"
 alias i3rc="vim ~/.config/i3/config"
 alias i3statusrc="vim ~/.config/i3status-rust/config.toml"
 alias vimrc="vim ~/.vimrc"
-alias fzfp="fzf --preview='head -$LINES {}'"
-alias TS="trizen -Syu"
 alias inet="ip -br a"
-alias wiki="vim $HOME/Code/github/databank/playbook/pages/index.md"
 alias ls="exa"
 alias el="exa --oneline"
 alias ee="exa --header --long"
 alias la="exa --header --long --git --all"
 alias ssh="ssh -v"
-alias nextdnsup="sudo nextdns install -config b29cfa -report-client-info && sudo nextdns activate"
-alias nextdnsdown="sudo nextdns deactivate && sudo nextdns uninstall"
 alias doc='docker-compose'
-alias notes='code $HOME/Documents/notes/'
-alias offdocker='docker run --rm -it --name my-offensive-docker aaaguirrep/offensive-docker /bin/zsh'
 alias portainer='docker run -d -p 9001:9001 -p 9000:9000 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce'
 alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias k="minikube kubectl --"
 alias mk="minikube"
-alias qb="flatpak run org.qutebrowser.qutebrowser "
-#alias lynx="docker run -it --rm rwxrob/lynx "
 alias chmox="chmod +x "
-alias lg="lazygit"
 #
 #######################################################
 #                  Git Alias                          #
@@ -108,41 +90,11 @@ cheat() { curl -s "cheat.sh/$1"; }
 startvm() { VBoxManage startvm "$1"}
 startvmheadless() { VBoxManage startvm "$1" --type headless }
 stopvm() { VBoxManage controlvm "$1" poweroff }
-pw() {
-  pwgen -sync "${1:-48}" -1
-}
 #
-FTS() {
-  echo -e "[*] Checking Flatpak for Updates [*]"
-  flatpak update
-  echo -e "[*] Running Pacman -Syu [*]"
-  trizen -Syu
-  echo -e "[!] Update Complete! [!]"
-}
 # cd and ls automatically
 function cd {
   builtin cd "$@" && ls -F; 
 }
-
-mkdircd() {
-  mkdir -p $1 && cd $_
-}
-
-poetryshell() {
-  echo "Activating Poetry shell..."
-  source "$( poetry env list --full-path | grep Activated | cut -d' ' -f1 )/bin/activate" 
-}
-
-changedetection() {
-  echo -e "[!] getting latest `changedetection.io` docker image [!]"
-  docker pull dgtlmoon/changedetection.io
-  echo -e "[!] ..done - killing old containers... [!]"
-  docker kill $(docker ps -a|grep changedetection.io|awk '{print $1}')
-  docker rm $(docker ps -a|grep changedetection.io|awk '{print $1}')
-  echo -e "[!] ..restarting the container with new image..."
-  docker run -d --restart always -p "127.0.0.1:5500:5000" -v datastore-volume:/datastore --name changedetection.io dgtlmoon/changedetection.io
-}
-
 #######################################################
 #                 VIM bindings                        #
 #######################################################
