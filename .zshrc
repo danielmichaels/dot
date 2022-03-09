@@ -33,6 +33,7 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export GITUSER="danielmichaels"
 export SCRIPTS="$HOME/.local/bin/scripts"
+export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
 #######################################################
 #                  GO Settings                      #
 #######################################################
