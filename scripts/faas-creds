@@ -1,0 +1,8 @@
+#!/bin/bash
+printf "exporting faasd creds to env\n"
+echo "usage: . faas-creds"
+
+FAASD_DOMAIN=faasd.ptco.rocks
+
+export OPENFAAS_PREFIX=docker.io/danielmichaels
+export OPENFAAS_URL=https://$FAASD_DOMAIN

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+curlie -I wttr.in/Canberra

@@ -1,0 +1,72 @@
+theme = "dracula"
+icons = "awesome"
+
+#[[block]]
+#block = "custom"
+#command = "curl api.ipify.org"
+
+[[block]]
+block = "networkmanager"
+on_click = "networkmanager_dmenu"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+", "vnet\\d+"]
+
+[[block]]
+block = "docker"
+interval = 2
+format = "{running}/{total}"
+
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+#format_mem = "{Mup}%"
+#format_swap = "{SUp}%"
+
+[[block]]
+block = "cpu"
+format = "{barchart} {utilization} {frequency}"
+interval = 5
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "uptime"
+
+#[[block]]
+#block = "pacman"
+#interval = 600
+#format = "{pacman} + {aur} = {both} updates available"
+#format_singular = "{both} update available"
+#format_up_to_date = "system up to date"
+#critical_updates_regex = "(linux|linux-lts|linux-zen)"
+## aur_command should output available updates to stdout (ie behave as echo -ne "update\n")
+#aur_command = "trizen -Qua"
+
+[[block]]
+block = "sound"
+
+[[block]]
+block = "pomodoro"
+length = 25
+break_length = 5
+message = "Take a break!"
+break_message = "Back to work!"
+notifier = "i3nag"
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+#test ! -n flatpak && echo "Flatpak not installed" && exit 1;
+command -v flatpak >/dev/null 2>&1 || echo "flatpak not installed" && exit 1;
+
+echo "[*] Checking Flatpak for Updates [*]"
+flatpak Updates
+echo "[*] Running system updater [*]"
+

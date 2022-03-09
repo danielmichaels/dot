@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+test ! -n /usr/local/etc/ipinfo-token && echo "Token not set at /usr/loca/etc/ipinfo-token" && exit 1
+
+. /usr/local/etc/ipinfo-token 
+
+if [ $# -eq 0 ]; then
+  curlie -H "Authorization: Bearer $IPINFO_TOKEN" ipinfo.io/json
+else
+  curlie -H "Authorization: Bearer $IPINFO_TOKEN" ipinfo.io/$1
+fi
+
+export IPINFO_TOKEN=
