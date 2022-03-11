@@ -34,6 +34,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export GITUSER="danielmichaels"
 export SCRIPTS="$HOME/.local/bin/scripts"
 export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
+export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
 #######################################################
 #                  GO Settings                      #
 #######################################################
@@ -125,3 +126,6 @@ eval "$(starship init zsh)"
 command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
 command -v feh >/dev/null 2>&1 && feh-bg
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -160,6 +160,7 @@ bindsym $mod+Shift+9 move container to workspace number $vbox
 bindsym $mod+Shift+0 move container to workspace number $email
 
 # Make apps open in correct workspace
+assign [class="(?i)beekeeper"] $terms
 assign [class="(?i)pycharm"] $pycharm
 assign [class="(?i)goland"] $goland
 assign [class="(?i)webstorm"] $intellij
