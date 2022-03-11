@@ -24,3 +24,12 @@ ln -sf "$PWD/i3status-rust" ~/.config
 # may need to mkdir -p ~/.screenlayout first
 ln -sf "$PWD/default-i3.sh" ~/.screenlayout/
 ```
+
+## Setup Exports
+
+The following are needed in `.zshrc` (already in my `.zshrc` file) for `newx` to work.
+
+```sh
+export SCRIPTS="$HOME/.local/bin/scripts"
+export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
+```
