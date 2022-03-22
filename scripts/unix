@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+test ! -n "${1}" && echo "usage: unix <timestamp>" && exit 1;
+
+date -d "@${1}"
