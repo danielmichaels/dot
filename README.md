@@ -33,3 +33,7 @@ The following are needed in `.zshrc` (already in my `.zshrc` file) for `newx` to
 export SCRIPTS="$HOME/.local/bin/scripts"
 export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
 ```
+
+### Inspired by
+
+[rwxrob](https://github.com/rwxrob) and his pretty sweet [setup](https://github.com/rwxrob/dot). 
