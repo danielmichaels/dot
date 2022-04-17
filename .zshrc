@@ -22,6 +22,7 @@ source $ZSH/oh-my-zsh.sh
 #                  Exports                            #
 #######################################################
 #
+export GPG_TTY=$(tty)
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/usr/local/go/bin
@@ -40,7 +41,9 @@ export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
 #######################################################
 # Setup private repos by defining the user, in this case, me.
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
+export CGO_ENABLE=off
 export GOPROXY=https://goproxy.io,direct
+#export GOPROXY=off
 #######################################################
 #                  Exports
 #######################################################
@@ -108,7 +111,7 @@ bindkey '^R' history-incremental-search-backward
 bindkey '^ ' autosuggest-accept
 #
 #######################################################
-#                 VIRTUALENV                          #
+#                 VIRTUAL ENVIRONMENTS                #
 #######################################################
 #
 VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
@@ -117,15 +120,20 @@ source $HOME/.local/bin/virtualenvwrapper.sh  #work around --user install
 export WORKON_HOME=$HOME/.virtualenvs
 alias mkvirtualenv="mkvirtualenv --python=/usr/bin/python3.10" # manually change for py2
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 #######################################################
-#                 START UP                           #
+#                 COMPLETIONS                         #
+#######################################################
+command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
+command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
+command -v feh >/dev/null 2>&1 && feh-bg
+complete -C ds ds
+autoload -U compinit && compinit -i
+#######################################################
+#                 START UP                            #
 #######################################################
 eval $(thefuck --alias)
 eval "$(starship init zsh)"
 
-command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
-command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
-command -v feh >/dev/null 2>&1 && feh-bg
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

@@ -26,7 +26,6 @@ Plug 'scrooloose/nerdtree'
 " above was removed as it prevents NERDTree from loading when calling 'vim' 
 Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'mattn/calendar-vim'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 "Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 "Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -143,11 +142,11 @@ augroup END
 
 "Highlight characters that go over 80 columns (by drawing a border on the 81st)
 if exists('+colorcolumn')
-  set colorcolumn=81
+  set colorcolumn=100
   highlight ColorColumn ctermbg=red
 else
   highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-  match OverLength /\%81v.\+/
+  match OverLength /\%101v.\+/
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -178,6 +177,14 @@ set smartindent           " automatically insert one extra level of indentation
 set smarttab              " use tabs at the start of a line, spaces elsewhere
 set nowrap                " don't wrap text
 set complete+=kspell      " autocomplete for misspelt words
+" Markdown specific
+au BufRead,BufNewFile *.md setlocal textwidth=100
+au BufRead,BufNewFile *.md setlocal wrapmargin=0
+au BufRead,BufNewFile *.md setlocal formatoptions+=t
+au BufRead,BufNewFile *.md setlocal linebreak
+au BufRead,BufNewFile *.md setlocal wrap
+au BufRead,BufNewFile *.md setlocal columns=100
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "------------Start Python PEP 8 stuff----------------
@@ -299,43 +306,3 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09. Vimwiki Custom
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" vimwiki syntax
-let g:vimwiki_list = [{'path': '$HOME/Code/github/databank/playbook/pages/', 'syntax': 'markdown', 'ext':'.md'}]
-
-command! Diary VimwikiDiaryIndex
-augroup vimwikigroup
-    autocmd!
-    " automatically update links on read diary
-    autocmd BufRead,BufNewFile diary.md VimwikiDiaryGenerateLinks
-augroup end
-nnoremap <leader>dd :Diary<CR>
-nnoremap <leader>ch :CalendarH<CR>
-nnoremap <leader>c :Calendar<CR>
-nnoremap <leader>md :InstantMarkdownPreview<CR>
-nnoremap <leader>mdx :InstantMarkdownStop<CR>
-" Insert the image URL for dwiki/images
-nnoremap <leader>img <INSERT>https://github.com/danielmichaels/dwiki/blob/master/images/<CR>
-
-" vim-instant-preview
-"Uncomment to override defaults:
-"let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
-"let g:instant_markdown_open_to_the_world = 1 
-"let g:instant_markdown_allow_unsafe_content = 1
-"let g:instant_markdown_allow_external_content = 0
-"let g:instant_markdown_mathjax = 1
-let g:instant_markdown_browser = "firefox --new-window"
-let g:vmt_cycle_list_item_markers = 1
-let g:vimwiki_markdown_link_ext = 1
-let g:vimwiki_dir_link = 'index'
-"let g:vimwiki_auto_toc = 1
-let g:instant_markdown_logfile = "/tmp/instant_markdown.log"
-"
-" Aggregate all vim swap files to one place. Vimwiki constant swp issues.
-" Folder '.vim/swapfiles' must be created first!!
-set directory^=$HOME/.vim/swapfiles//
