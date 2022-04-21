@@ -24,11 +24,12 @@ FILE="${path}/${FILENAME}"
 
 if [ $# -eq 0 ]
   then
-    echo "Missing filename argument"
+    printf "%s\n\n" "[!] Missing filename argument [!]"
+    printf "%s\n\t%s\n" "example usage:" "til 'a new thing I learned today'"
     exit
 fi
 
-if [ -e "$1".md ]; then
+if [ -e "$FILE" ]; then
   echo "File Already Exists"
 else
   touch "$FILE"

@@ -41,9 +41,8 @@ export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
 #######################################################
 # Setup private repos by defining the user, in this case, me.
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
-export CGO_ENABLE=off
+export CGO_ENABLED=0
 export GOPROXY=https://goproxy.io,direct
-#export GOPROXY=off
 #######################################################
 #                  Exports
 #######################################################
@@ -93,7 +92,7 @@ alias checkout="git checkout"
 gi() { curl -sLw n https://www.gitignore.io/api/$@ ;}
 cheat() { curl -s "cheat.sh/$1"; }
 startvm() { VBoxManage startvm "$1"}
-startvmheadless() { VBoxManage startvm "$1" --type headless }
+#startvmheadless() { VBoxManage startvm "$1" --type headless }
 stopvm() { VBoxManage controlvm "$1" poweroff }
 #
 # cd and ls automatically
