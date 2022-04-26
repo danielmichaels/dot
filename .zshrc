@@ -33,6 +33,7 @@ export VISUAL=vim
 export PATH="$HOME/.poetry/bin:$PATH"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export GITUSER="danielmichaels"
+export REPOS="Code/github"
 export SCRIPTS="$HOME/.local/bin/scripts"
 export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
 export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
@@ -41,6 +42,7 @@ export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
 #######################################################
 # Setup private repos by defining the user, in this case, me.
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
+export GOBIN="$HOME/.local/bin"
 export CGO_ENABLED=0
 export GOPROXY=https://goproxy.io,direct
 #######################################################

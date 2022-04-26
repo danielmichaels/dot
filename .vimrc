@@ -24,7 +24,6 @@ Plug 'fatih/vim-go', {'for': ['go', 'markdown'] } "Loads only when editing go fi
 Plug 'scrooloose/nerdtree'
 ", {'on': ['NERDTreeToggle', 'NERDTreeFind'] } "Loads only when opening NERDTree
 " above was removed as it prevents NERDTree from loading when calling 'vim' 
-Plug 'vimwiki/vimwiki', {'branch': 'dev'}
 Plug 'mattn/calendar-vim'
 "Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
