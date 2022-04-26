@@ -14,6 +14,10 @@ These are my custom files and scripts. They are probably tightly coupled to my s
 
 These are done from the top level of the directory.
 
+**Note**
+
+Running `setup` will execute the following commands. Must be run from the root of this directory.
+
 ```sh
 ln -sf "$PWD/.zshrc" ~/
 ln -sf "$PWD/.vimrc" ~/
