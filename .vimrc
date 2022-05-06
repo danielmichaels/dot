@@ -20,11 +20,11 @@
 set nocompatible         " get rid of Vi compatibility mode. SET FIRST!
 
 call plug#begin()
-Plug 'fatih/vim-go', {'for': ['go', 'markdown'] } "Loads only when editing go files
+Plug 'fatih/vim-go', {'for': ['go', 'markdown'], 'do': ':GoInstallBinaries' } "Loads only when editing go files
 Plug 'scrooloose/nerdtree'
 ", {'on': ['NERDTreeToggle', 'NERDTreeFind'] } "Loads only when opening NERDTree
 " above was removed as it prevents NERDTree from loading when calling 'vim' 
-Plug 'mattn/calendar-vim'
+"Plug 'mattn/calendar-vim'
 "Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 "Plug 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -38,29 +38,33 @@ Plug 'z0mbix/vim-shfmt', {'for':'sh'}
 " Language and File types
 "Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'machakann/vim-highlightedyank'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'cakebaker/scss-syntax.vim'
-Plug 'chr4/nginx.vim'
+"Plug 'chr4/nginx.vim'
 Plug 'chrisbra/csv.vim'
 Plug 'ekalinin/dockerfile.vim'
-Plug 'elixir-editors/vim-elixir'
+"Plug 'elixir-editors/vim-elixir'
 Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'stephpy/vim-yaml'
 Plug 'pearofducks/ansible-vim'
 Plug 'lifepillar/pgsql.vim'
 Plug 'othree/html5.vim'
+" Markdown 
+Plug 'dkarter/bullets.vim'
+"Plug 'godlygeek/tabular'
+"Plug 'preservim/vim-markdown'
 " Colours and Themes
 "Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
+"Plug 'junegunn/seoul256.vim'
+"Plug 'junegunn/goyo.vim'
+"Plug 'junegunn/limelight.vim'
 " Automatically show Vim's complete menu while typing.
 Plug 'vim-scripts/AutoComplPop'
 " A bunch of useful language related snippets (ultisnips is the engine).
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -183,6 +187,7 @@ au BufRead,BufNewFile *.md setlocal formatoptions+=t
 au BufRead,BufNewFile *.md setlocal linebreak
 au BufRead,BufNewFile *.md setlocal wrap
 au BufRead,BufNewFile *.md setlocal columns=100
+au BufRead,BufNewFile *.md setlocal colorcolumn=72
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""
 "
@@ -305,3 +310,5 @@ let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_new_list_item_indent = 0

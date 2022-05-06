@@ -36,7 +36,8 @@ export GITUSER="danielmichaels"
 export REPOS="Code/github"
 export SCRIPTS="$HOME/.local/bin/scripts"
 export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
-export BLOG_DIRECTORY=$HOME/Code/github/danielms/content/blog
+export BLOG_DIRECTORY=$HOME/$REPOS/danielms/content/blog
+export BLOG_PATH=$REPOS/danielms
 #######################################################
 #                  GO Settings                      #
 #######################################################
@@ -72,6 +73,8 @@ alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:
 alias k="minikube kubectl --"
 alias mk="minikube"
 alias chmox="chmod +x "
+alias goids="go install github.com/danielmichaels/ds/cmd/ds@latest"
+alias goizet="go install github.com/danielmichaels/zet-cmd/cmd/zet@latest"
 #
 #######################################################
 #                  Git Alias                          #
