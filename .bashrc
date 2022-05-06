@@ -149,17 +149,20 @@ alias vimrc="vim ~/.vimrc"
 alias zs="vim ~/.zshrc"
 alias inet="ip -br a"
 alias gs="git status"
+alias ga="git add"
 alias gf="git fetch"
 alias gl="git log --graph --oneline --decorate --all"
 alias gc="git commit"
 alias gac="git add . && git commit" # drop into EDITOR to confirm 'git add .'
 alias gp="git push -v"
-
+alias top="bashtop"
 
 # ------------------------------ functions -----------------------------
 function cd {
   builtin cd "$@" && ls -F; 
 }
+
+cdz () { cd $(zet get "$@"); }
 
 
 # ------------------------------ vi bindings -----------------------------
@@ -168,9 +171,11 @@ bind '"jk":vi-movement-mode'
 
 
 # ------------------------------ completers -----------------------------
-complete gh gh
-complete -C ds ds
-complete -C zet zet
+owncomp=( zet ds)
+
+for i in "${owncomp[@]}"; do complete -C "$i" "$i"; done
+
+_have gh && . <(gh completion -s bash)
 
 # ------------------------------ pretty shell -----------------------------
 command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
