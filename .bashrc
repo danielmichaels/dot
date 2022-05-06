@@ -124,6 +124,53 @@ _source_if() { [[ -r "$1" ]] && source "$1"; }
 
 export USER="${USER:-$(whoami)}"
 export GITUSER=danielmichaels
+export EDITOR=vim
+export VISUAL=vim
 export REPOS="$HOME/Code"
 export GHREPOS="$REPOS/github"
 export ZETDIR="$GHREPOS/zet"
+export PATH=$PATH:~/.local/bin
+export SCRIPTS="$HOME/.local/bin/scripts"
+export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
+export BLOG_DIRECTORY=$HOME/$REPOS/danielms/content/blog
+export BLOG_PATH=$REPOS/danielms
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$(go env GOPATH)/bin:$PATH"
+export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
+export GOBIN="$HOME/.local/bin"
+export CGO_ENABLED=0
+export GOPROXY=https://goproxy.io,direct
+
+# ------------------------------ aliases -----------------------------
+alias ssh="ssh -v"
+alias doc='docker-compose'
+alias chmox="chmod +x "
+alias vimrc="vim ~/.vimrc"
+alias zs="vim ~/.zshrc"
+alias inet="ip -br a"
+alias gs="git status"
+alias gf="git fetch"
+alias gl="git log --graph --oneline --decorate --all"
+alias gc="git commit"
+alias gac="git add . && git commit" # drop into EDITOR to confirm 'git add .'
+alias gp="git push -v"
+
+
+# ------------------------------ functions -----------------------------
+function cd {
+  builtin cd "$@" && ls -F; 
+}
+
+
+# ------------------------------ vi bindings -----------------------------
+set -o vi
+bind '"jk":vi-movement-mode'
+
+
+# ------------------------------ completers -----------------------------
+complete gh gh
+complete -C ds ds
+complete -C zet zet
+
+# ------------------------------ pretty shell -----------------------------
+command -v starship >/dev/null 2>&1 && eval "$(starship init bash)"
