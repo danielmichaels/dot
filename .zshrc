@@ -18,34 +18,69 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+pathappend() {
+  declare arg
+  for arg in "$@"; do
+    test -d "$arg" || continue
+    PATH=${PATH//":$arg:"/:}
+    PATH=${PATH/#"$arg:"/}
+    PATH=${PATH/%":$arg"/}
+    export PATH="${PATH:+"$PATH:"}$arg"
+  done
+} && export pathappend
+
+pathprepend() {
+  for arg in "$@"; do
+    test -d "$arg" || continue
+    PATH=${PATH//:"$arg:"/:}
+    PATH=${PATH/#"$arg:"/}
+    PATH=${PATH/%":$arg"/}
+    export PATH="$arg${PATH:+":${PATH}"}"
+  done
+} && export pathprepend
+
+# remember last arg will be first in path
+pathprepend \
+  /usr/local/bin \
+  "$HOME/.local/bin" \
+  "$SCRIPTS" \
+  "$HOME/.cargo/bin" \
+  "$HOME/.npm-global/bin" \
+  "$HOME/.poetry/bin" 
+
+pathappend \
+  /usr/local/bin \
+  /usr/local/sbin \
+  /usr/sbin \
+  /usr/bin \
+  /snap/bin \
+  /sbin \
+  /bin
 #######################################################
 #                  Exports                            #
 #######################################################
 #
-export GPG_TTY=$(tty)
-export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH="$(go env GOPATH)/bin:$PATH"
-export PATH=~/.npm-global/bin:$PATH
+export USER="${USER:-$(whoami)}"
+export GITUSER=danielmichaels
 export EDITOR=vim
 export VISUAL=vim
+export REPOS="$HOME/Code"
+export GHREPOS="$REPOS/github"
+export ZETDIR="$GHREPOS/zet"
 export PATH="$HOME/.poetry/bin:$PATH"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
-export GITUSER="danielmichaels"
-export REPOS="Code/github"
-export SCRIPTS="$HOME/.local/bin/scripts"
-export PATH=~/.local/bin/scripts:~/.local/bin:$PATH
 export BLOG_DIRECTORY=$HOME/$REPOS/danielms/content/blog
 export BLOG_PATH=$REPOS/danielms
+export GPG_TTY=$(tty)
 #######################################################
 #                  GO Settings                      #
 #######################################################
 # Setup private repos by defining the user, in this case, me.
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
+export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/bin"
-export CGO_ENABLED=0
 export GOPROXY=https://goproxy.io,direct
+export CGO_ENABLED=0
 #######################################################
 #                  Exports
 #######################################################
