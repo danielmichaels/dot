@@ -5,6 +5,7 @@ set -e
 ln -sf "$PWD/.zshrc" ~/
 ln -sf "$PWD/.vimrc" ~/
 ln -sf "$PWD/.bashrc" ~/
+ln -sf "$PWD/starship.toml" ~/.config/
 # need to setup a PATH directive for scripts (done inside .zshrc)
 ln -sf "$PWD/scripts" ~/.local/bin/scripts
 ln -sf "$PWD/i3" ~/.config

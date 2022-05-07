@@ -167,7 +167,7 @@ export NVM_DIR="$HOME/.nvm"
 #######################################################
 command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
-command -v feh >/dev/null 2>&1 && feh-bg
+#command -v feh >/dev/null 2>&1 && feh-bg
 complete -C ds ds
 autoload -U compinit && compinit -i
 #######################################################
