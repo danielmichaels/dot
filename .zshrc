@@ -90,17 +90,19 @@ export OPENFAAS_URL=https://faasd.ptco.rocks
 #######################################################
 #
 alias faas="faas-cli"
-alias env="env-twitch"
+alias env="ds s env-check"
 alias zs="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias i3rc="vim ~/.config/i3/config"
 alias i3statusrc="vim ~/.config/i3status-rust/config.toml"
 alias vimrc="vim ~/.vimrc"
 alias inet="ip -br a"
-alias ls="exa"
-alias el="exa --oneline"
-alias ee="exa --header --long"
-alias la="exa --header --long --git --all"
+if [[ -x exa ]]; then
+  alias ls="exa"
+  alias el="exa --oneline"
+  alias ee="exa --header --long"
+  alias la="exa --header --long --git --all"
+fi
 alias ssh="ssh -v"
 alias doc='docker-compose'
 alias portainer='docker run -d -p 9001:9001 -p 9000:9000 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce'
@@ -166,6 +168,7 @@ export NVM_DIR="$HOME/.nvm"
 #                 COMPLETIONS                         #
 #######################################################
 command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
+command -v rclone >/dev/null 2>&1 && source <(rclone completion zsh)
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
 #command -v feh >/dev/null 2>&1 && feh-bg
 complete -C ds ds
