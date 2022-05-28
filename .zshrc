@@ -43,10 +43,12 @@ pathprepend() {
 pathprepend \
   /usr/local/bin \
   "$HOME/.local/bin" \
+  "$HOME/.local/bin/scripts" \
   "$SCRIPTS" \
   "$HOME/.cargo/bin" \
   "$HOME/.npm-global/bin" \
-  "$HOME/.poetry/bin" 
+  "$HOME/.poetry/bin" \
+  "~/.rd/bin"
 
 pathappend \
   /usr/local/bin \
