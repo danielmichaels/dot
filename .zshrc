@@ -103,12 +103,6 @@ alias i3rc="vim ~/.config/i3/config"
 alias i3statusrc="vim ~/.config/i3status-rust/config.toml"
 alias vimrc="vim ~/.vimrc"
 alias inet="ip -br a"
-if [[ -x multipass ]]; then
-  alias mp="multipass"
-fi
-if [[ -x kubectl ]]; then
-  alias k="kubectl"
-fi
 if [[ -x exa ]]; then
   alias ls="exa"
   alias el="exa --oneline"
@@ -124,6 +118,8 @@ alias mk="minikube"
 alias chmox="chmod +x "
 alias goids="go install github.com/danielmichaels/ds/cmd/ds@latest"
 alias goizet="go install github.com/danielmichaels/zet-cmd/cmd/zet@latest"
+command -v multipass >/dev/null 2>&1 && alias mp="multipass"
+command -v kubectl >/dev/null 2>&1 && alias k="kubectl"
 #
 #######################################################
 #                  Git Alias                          #
