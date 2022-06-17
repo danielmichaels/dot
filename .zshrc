@@ -18,6 +18,9 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
+# remap CAPS_LOCK to CTRL
+/usr/bin/setxkbmap -option "ctrl:nocaps"
+
 pathappend() {
   declare arg
   for arg in "$@"; do
@@ -48,6 +51,7 @@ pathprepend \
   "$HOME/.cargo/bin" \
   "$HOME/.npm-global/bin" \
   "$HOME/.poetry/bin" \
+  "$HOME/.fly/bin" \
   "~/.rd/bin"
 
 pathappend \
@@ -99,6 +103,12 @@ alias i3rc="vim ~/.config/i3/config"
 alias i3statusrc="vim ~/.config/i3status-rust/config.toml"
 alias vimrc="vim ~/.vimrc"
 alias inet="ip -br a"
+if [[ -x multipass ]]; then
+  alias mp="multipass"
+fi
+if [[ -x kubectl ]]; then
+  alias k="kubectl"
+fi
 if [[ -x exa ]]; then
   alias ls="exa"
   alias el="exa --oneline"
@@ -180,4 +190,3 @@ autoload -U compinit && compinit -i
 #######################################################
 eval $(thefuck --alias)
 eval "$(starship init zsh)"
-
