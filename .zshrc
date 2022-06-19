@@ -78,6 +78,7 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 export BLOG_DIRECTORY=$HOME/$REPOS/danielms/content/blog
 export BLOG_PATH=$REPOS/danielms
 export GPG_TTY=$(tty)
+export SCRIPTS="${HOME}/.local/bin/scripts"
 #######################################################
 #                  GO Settings                      #
 #######################################################
@@ -178,6 +179,7 @@ export NVM_DIR="$HOME/.nvm"
 command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "github-cli not installed, cannot source completions"
 command -v rclone >/dev/null 2>&1 && source <(rclone completion zsh)
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
+command -v arkade >/dev/null 2>&1 && source <(arkade completion zsh)
 #command -v feh >/dev/null 2>&1 && feh-bg
 complete -C ds ds
 autoload -U compinit && compinit -i
@@ -186,3 +188,5 @@ autoload -U compinit && compinit -i
 #######################################################
 eval $(thefuck --alias)
 eval "$(starship init zsh)"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
