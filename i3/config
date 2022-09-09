@@ -25,7 +25,7 @@ font pango:DejaVu Sans Mono 8
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-set $i3lockwall /usr/local/bin/betterlockscreen --lock 
+set $i3lockwall /usr/local/bin/betterlockscreen --lock
 # if the background goes, regenerate by running it manually with:
 # betterlockscreen -l -u <path-to-image>
 bindsym $mod+Ctrl+Shift+l exec --no-startup-id $i3lockwall
@@ -52,7 +52,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+shift+d exec rofi -show drun -show-icons -sidebar-mode 
+bindsym $mod+shift+d exec rofi -show drun -show-icons -sidebar-mode
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec rofi -modi drun,run -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -144,7 +144,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $vbox
 bindsym $mod+0 workspace number $email
 
-# move workspace to another screen 
+# move workspace to another screen
 bindsym $mod+p move workspace to output right
 
 # move focused container to workspace
@@ -279,8 +279,8 @@ exec --no-startup-id thunderbird
 exec --no-startup-id greenclip daemon
 exec --no-startup-id /opt/piavpn/bin/pia-client
 #exec --no-startup-id xautolock -detectsleep -time 1 -locker "/usr/bin/betterlockscreen --lock" -corners 0-0- -cornersize 30
-#exec --no-startup-id xautolock -time 2 -locker "systemctl suspend" 
+#exec --no-startup-id xautolock -time 2 -locker "systemctl suspend"
 # Polkit for authentication prompts
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 --exit-with-session i3
 exec --no-startup-id /usr/bin/setxkbmap -option "ctrl:nocaps"
-exec_always --no-startup-id ~/.screenlayout/default-i3.sh 
+exec_always --no-startup-id ~/.screenlayout/default-i3.sh
