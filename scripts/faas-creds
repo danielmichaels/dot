@@ -2,7 +2,11 @@
 printf "exporting faasd creds to env\n"
 echo "usage: . faas-creds"
 
-FAASD_DOMAIN=faasd.ptco.rocks
-
 export OPENFAAS_PREFIX=docker.io/danielmichaels
-export OPENFAAS_URL=https://$FAASD_DOMAIN
+export TLD=dansult.space
+export DOMAIN=openfaas.k3s.$TLD
+export OPENFAAS_URL=https://$DOMAIN
+
+PASSWORD=$(kubectl get secret -n openfaas basic-auth -o jsonpath="{.data.basic-auth-password}" | base64 --decode; echo)
+
+echo $PASSWORD | faas-cli login -s

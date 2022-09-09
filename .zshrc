@@ -52,7 +52,8 @@ pathprepend \
   "$HOME/.npm-global/bin" \
   "$HOME/.poetry/bin" \
   "$HOME/.fly/bin" \
-  "~/.rd/bin"
+  "~/.rd/bin" \
+  "$HOME/.arkade/bin"
 
 pathappend \
   /usr/local/bin \
@@ -111,7 +112,7 @@ if [[ -x exa ]]; then
   alias la="exa --header --long --git --all"
 fi
 alias ssh="ssh -v"
-alias doc='docker-compose'
+alias doc='docker compose'
 alias portainer='docker run -d -p 9001:9001 -p 9000:9000 --name=portainer --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce'
 alias swagger="docker run --rm -it  --user $(id -u):$(id -g) -e GOPATH=$HOME/go:/go -v $HOME:$HOME -w $(pwd) quay.io/goswagger/swagger"
 alias k="minikube kubectl --"
@@ -190,3 +191,4 @@ eval $(thefuck --alias)
 eval "$(starship init zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export KUBECONFIG=~/.kube/k3s.yaml

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+echo "usage: . k3s-remote"
+echo "not sourcing this file first will cause issues"
+
+export KUBECONFIG=~/.kube/k3s-remote
+
+echo "Set remote k3s as context"
+
+kubectl config get-contexts
+kubectl get node -o wide

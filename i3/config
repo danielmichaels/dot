@@ -176,6 +176,7 @@ assign [class="(?i)signal"] $chats
 assign [class="(?i)virtualbox"] $vbox
 assign [class="(?i)thunderbird"] $email
 assign [class="(?i)steam"] $steam
+assign [class="(?i)dev-linux"] $terms
 
 # Set these apps to open as floating window
 for_window [window_role="pop-up"] floating enable

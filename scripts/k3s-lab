@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+export KUBECONFIG=~/.kube/proxmox-config
+
+kubectl get node -o wide
