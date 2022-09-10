@@ -53,8 +53,8 @@ pathprepend \
   "$HOME/.poetry/bin" \
   "$HOME/.fly/bin" \
   "~/.rd/bin" \
-  "$HOME/.arkade/bin" \
-  "$HOME/.dotfiles/local/bin"
+  "$HOME/.dotfiles/local/bin" \
+  "$HOME/.arkade/bin"
 
 pathappend \
   /usr/local/bin \
