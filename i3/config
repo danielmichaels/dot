@@ -241,6 +241,7 @@ mode "resize" {
 # Scratchpad setup
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+bindsym F12 exec guake toggle
 
 bindsym $mod+r mode "resize"
 

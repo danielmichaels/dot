@@ -71,7 +71,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'vim-scripts/AutoComplPop'
 " A bunch of useful language related snippets (ultisnips is the engine).
 "Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
+Plug 'voldikss/vim-floaterm'
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

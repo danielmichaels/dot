@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+test ! -n "${1}" && echo "usage: new-faas <name> <template>" && exit 1;
+
+project="${1}"
+template="${2:-golang-middleware}"
+
+mkdir -p $GHREPOS/faas-templates/$project
+cd $GHREPOS/faas-templates/$project
+faas-cli template store pull $template
+faas-cli new --lang $template $1
+
+cp $GHREPOS/faas-templates/example-make $GHREPOS/faas-templates/$project/Makefile
+sed -i "s/SEDME/$project/" "$GHREPOS/faas-templates/$project/Makefile"
+
+echo "Initialised a '$template' project named '$project'"
+
