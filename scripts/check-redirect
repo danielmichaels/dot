@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+set -e
+#set -x
+#set -u
+
+domain=${1:-}
+user_agent="chrome"
+api="https://check-redirects.infra.ptco.rocks/api/search/"
+
+test ! -n "${domain}"  && echo "usage: check-redirect <domain>" && exit 1;
+[ $domain ] && echo "here it is"
+
+result=$(curlie -L "${api}" domain=$domain user_agent=$user_agent)
+
+detail=$(echo $result | jq -e '.detail' && echo "Nothing found" || 2>&1 /dev/null )
+#notfound="\"Not Found"\"
+#if [ "$detail" == "$notfound" ];
+#then
+#  echo "Nothing found at '${domain}'"
+#  exit 1
+#fi
+#echo "detail=$detail"
+
+
+status_code="$result" | jq '.status_code'
+
+echo "${status_code:-}"
+
+

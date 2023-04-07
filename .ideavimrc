@@ -1,4 +1,7 @@
 source ~/.vimrc
 " Enable native idea paste action for put operations
-set clipboard+=ideaput
+"set clipboard+=ideaput
+" use system clipboard
+set clipboard+=unamed
+set highlightedyank
 

@@ -9,3 +9,5 @@ zsh_indicator = "z"
 bash_indicator = ">>"
 style = "cyan bold"
 
+[kubernetes]
+disabled = false
