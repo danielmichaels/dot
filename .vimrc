@@ -57,13 +57,14 @@ Plug 'lifepillar/pgsql.vim'
 Plug 'othree/html5.vim'
 " Markdown 
 Plug 'dkarter/bullets.vim'
-"Plug 'godlygeek/tabular'
-"Plug 'preservim/vim-markdown'
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
 " Colours and Themes
 "Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'
+"Plug 'gruvbox-community/gruvbox'
 "Plug 'junegunn/seoul256.vim'
 "Plug 'junegunn/goyo.vim'
 "Plug 'junegunn/limelight.vim'
@@ -125,6 +126,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 colorscheme onedark
+"colorscheme gruvbox
 set background=dark
 
 " Use line cursor within insert mode and block cursor everywhere else

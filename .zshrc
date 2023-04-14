@@ -19,7 +19,7 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # remap CAPS_LOCK to CTRL
-/usr/bin/setxkbmap -option "ctrl:nocaps"
+/usr/bin/setxkbmap -option "ctrl:nocaps,caps:ctrl_modifier"
 
 pathappend() {
   declare arg
@@ -54,7 +54,10 @@ pathprepend \
   "$HOME/.fly/bin" \
   "~/.rd/bin" \
   "$HOME/.dotfiles/local/bin" \
-  "$HOME/.arkade/bin"
+  "$HOME/.arkade/bin" \
+  "$HOME/.ds/bin" \
+  "$HOME/.local/share/go/bin" \
+  "/var/lib/flatpak/exports/share"
 
 pathappend \
   /usr/local/bin \
@@ -81,6 +84,7 @@ export BLOG_DIRECTORY=$HOME/$REPOS/danielms/content/blog
 export BLOG_PATH=$REPOS/danielms
 export GPG_TTY=$(tty)
 export SCRIPTS="${HOME}/.local/bin/scripts"
+export SOPS_AGE_KEY_FILE=$HOME/.sops/dev-key.txt
 #######################################################
 #                  GO Settings                      #
 #######################################################
@@ -88,12 +92,12 @@ export SCRIPTS="${HOME}/.local/bin/scripts"
 export GOPRIVATE="github.com/$GITUSER/*,gitlab.com/$GITUSER/*"
 export GOPATH="$HOME/.local/share/go"
 export GOBIN="$HOME/.local/bin"
-export GOPROXY=https://goproxy.io,direct
+#export GOPROXY=https://goproxy.io,direct
 export CGO_ENABLED=0
 #######################################################
 #                  Exports
 #######################################################
-export OPENFAAS_URL=https://faasd.ptco.rocks
+#export OPENFAAS_URL=https://faasd.ptco.rocks
 #######################################################
 #                  General Alias                      #
 #######################################################
@@ -106,7 +110,7 @@ alias i3rc="vim ~/.config/i3/config"
 alias i3statusrc="vim ~/.config/i3status-rust/config.toml"
 alias vimrc="vim ~/.vimrc"
 alias inet="ip -br a"
-if [[ -x exa ]]; then
+if command -v exa >/dev/null 2>&1; then
   alias ls="exa"
   alias el="exa --oneline"
   alias ee="exa --header --long"
@@ -170,7 +174,7 @@ VIRTUALENVWRAPPER_PYTHON='/usr/bin/python3'
 #source /usr/bin/virtualenvwrapper.sh
 source $HOME/.local/bin/virtualenvwrapper.sh  #work around --user install
 export WORKON_HOME=$HOME/.virtualenvs
-alias mkvirtualenv="mkvirtualenv --python=/usr/bin/python3.10" # manually change for py2
+alias mkvirtualenv="mkvirtualenv --python=/usr/bin/python3.11" # manually change for py2
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -182,6 +186,8 @@ command -v gh >/dev/null 2>&1 && source <(gh completion --shell zsh) || echo "gi
 command -v rclone >/dev/null 2>&1 && source <(rclone completion zsh)
 command -v faas-cli >/dev/null 2>&1 && source <(faas-cli completion --shell zsh)
 command -v arkade >/dev/null 2>&1 && source <(arkade completion zsh)
+command -v flux >/dev/null 2>&1 && source <(flux completion zsh)
+command -v shfmt >/dev/null 2>&1 || echo "shell format not installed. run 'go install mvdan.cc/sh/v3/cmd/shfmt@latest'"
 #command -v feh >/dev/null 2>&1 && feh-bg
 complete -C ds ds
 autoload -U compinit && compinit -i
@@ -193,3 +199,7 @@ eval "$(starship init zsh)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export KUBECONFIG=~/.kube/k3s.yaml
+
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
