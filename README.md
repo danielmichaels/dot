@@ -1,5 +1,8 @@
 # Personal dotfiles and scripts
 
+> [!WARNING]  
+> This is deprecated in favour of [dotfiles](https://github.com/danielmichaels/dotfiles) which uses [chezmoi](https://chezmoi.io) to manage dotfiles.
+
 These are my custom files and scripts. They are probably tightly coupled to my systems and interests.
 
 ## Requirements
